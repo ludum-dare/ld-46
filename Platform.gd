@@ -16,8 +16,12 @@ func _ready():
 #	pass
 
 
-
-
-
+# platform is exciting free it up
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
+	# need to let 
 	queue_free()
+
+
+# platform is entering the scene
+func _on_VisibilityNotifier2D_viewport_entered(viewport):
+	pass # Replace with function body.
