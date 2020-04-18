@@ -1,16 +1,32 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Platform.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/player/small_frame_3.png" type="Texture" id=2]
 [ext_resource path="res://assets/player/small_frame_2.png" type="Texture" id=3]
 [ext_resource path="res://assets/player/small_frame_1.png" type="Texture" id=4]
+[ext_resource path="res://assets/player/medium_frame_3.png" type="Texture" id=5]
+[ext_resource path="res://assets/player/medium_frame_2.png" type="Texture" id=6]
+[ext_resource path="res://assets/player/large_frame_2.png" type="Texture" id=7]
+[ext_resource path="res://assets/player/large_frame_3.png" type="Texture" id=8]
+[ext_resource path="res://assets/player/large_frame_1.png" type="Texture" id=9]
+[ext_resource path="res://assets/player/medium_frame_1.png" type="Texture" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "default",
-"speed": 5.0
+"name": "large",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "small",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "medium",
+"speed": 10.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -29,6 +45,8 @@ __meta__ = {
 position = Vector2( 320, 390 )
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 1 )
+animation = "small"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
