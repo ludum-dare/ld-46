@@ -1,54 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Platform.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/player/small_frame_3.png" type="Texture" id=2]
-[ext_resource path="res://assets/player/small_frame_2.png" type="Texture" id=3]
-[ext_resource path="res://assets/player/small_frame_1.png" type="Texture" id=4]
-[ext_resource path="res://assets/player/medium_frame_3.png" type="Texture" id=5]
-[ext_resource path="res://assets/player/medium_frame_2.png" type="Texture" id=6]
-[ext_resource path="res://assets/player/large_frame_2.png" type="Texture" id=7]
-[ext_resource path="res://assets/player/large_frame_3.png" type="Texture" id=8]
-[ext_resource path="res://assets/player/large_frame_1.png" type="Texture" id=9]
-[ext_resource path="res://assets/player/medium_frame_1.png" type="Texture" id=10]
-[ext_resource path="res://player1.gd" type="Script" id=11]
-
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "large",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "small",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 6 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "medium",
-"speed": 10.0
-} ]
-
-[sub_resource type="CapsuleShape2D" id=4]
-radius = 107.445
-height = 180.99
+[ext_resource path="res://player1.tscn" type="PackedScene" id=2]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Platform" parent="." instance=ExtResource( 1 )]
 position = Vector2( 223.166, 540.887 )
 
-[node name="player1" type="KinematicBody2D" parent="."]
-position = Vector2( 300, 0 )
-scale = Vector2( 0.3, 0.3 )
-script = ExtResource( 11 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="player1"]
-frames = SubResource( 3 )
-animation = "small"
-playing = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player1"]
-position = Vector2( -24.1097, 12.5572 )
-shape = SubResource( 4 )
+[node name="player1" parent="." instance=ExtResource( 2 )]
