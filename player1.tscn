@@ -11,6 +11,7 @@
 [ext_resource path="res://player1.gd" type="Script" id=9]
 [ext_resource path="res://assets/player/large_frame_3.png" type="Texture" id=10]
 [ext_resource path="res://Camera2D.gd" type="Script" id=11]
+[ext_resource path="res://assets/player/jump.wav" type="AudioStream" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -42,7 +43,7 @@ script = ExtResource( 9 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "small"
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -57,3 +58,5 @@ limit_smoothed = true
 drag_margin_v_enabled = true
 drag_margin_bottom = 0.9
 script = ExtResource( 11 )
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )

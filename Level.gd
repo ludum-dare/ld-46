@@ -18,4 +18,4 @@ func _process(delta):
 
 func calc_score():
 	score = max(score, -int($player1.position.y / 100))
-	print(score)
+	$"CanvasLayer/Score UI/".score = score
