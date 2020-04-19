@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Platform.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Platforms.gd" type="Script" id=2]
+
+[node name="Platforms" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="OnScreenPlatform" parent="." instance=ExtResource( 1 )]
+position = Vector2( 122.061, 317.866 )
+
+[node name="OnScreenPlatform2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 297.523, 149.273 )
+
+[node name="OnScreenPlatform3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 244.501, 499.366 )
+
+[node name="OnScreenPlatform4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 119.898, -81.6942 )
+
+[node name="OnScreenPlatform5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 294.089, -226.641 )
+
+[node name="OnScreenPlatform6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 212.715, -348.702 )
