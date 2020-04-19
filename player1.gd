@@ -11,6 +11,8 @@ const AUTO_JUMP = true
 var velocity = Vector2()
 var onPlatform = false
 
+var score = 0
+
 func _physics_process(delta):
 	apply_gravity(delta)
 	if Input.is_action_pressed("ui_left") and not is_on_floor():
@@ -33,6 +35,8 @@ func _physics_process(delta):
 	# for i in range(get_slide_count()):
 	#	var collision = get_slide_collision(i)
 	# 	onPlatform = true
+	
+	calc_score()
 
 func apply_gravity(delta):
 	if is_on_floor():
@@ -41,9 +45,13 @@ func apply_gravity(delta):
 		velocity.y += delta * GRAVITY
 		
 
+func calc_score():
+	score = max(score, int(-position.y / 100))
+	print(score)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
