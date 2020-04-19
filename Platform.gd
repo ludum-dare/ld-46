@@ -28,7 +28,7 @@ func _on_VisibilityNotifier2D_viewport_exited(viewport):
 
 # platform is entering the scene
 func _on_VisibilityNotifier2D_viewport_entered(viewport):
-	print("entered the viewport")
+	pass
 	
 func get_bottom_left():
 	var vtrans = get_canvas_transform()
