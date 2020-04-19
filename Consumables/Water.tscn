@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Consumable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Consumables/Water.gd" type="Script" id=2]
+[ext_resource path="res://assets/items/water.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 75.8952, 112.806 )
+
+[node name="Water" instance=ExtResource( 1 )]
+scale = Vector2( 0.2, 0.2 )
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="Sprite/RigidBody2D" index="0"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" parent="Sprite" index="1"]
+scale = Vector2( 7.66492, 11.1435 )

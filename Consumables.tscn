@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Consumables/Coal.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Consumables.gd" type="Script" id=2]
+[ext_resource path="res://Consumables/Water.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Consumables/Log.tscn" type="PackedScene" id=4]
+
+[node name="Consumables" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Water" parent="." instance=ExtResource( 3 )]
+position = Vector2( 403.266, -144.648 )
+
+[node name="Coal" parent="." instance=ExtResource( 1 )]
+position = Vector2( 166.798, 124.743 )
+
+[node name="Log" parent="." instance=ExtResource( 4 )]
+position = Vector2( 364.956, 308.118 )
