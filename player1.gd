@@ -24,9 +24,11 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_up") and is_on_floor():
 		print("Jumped")
 		velocity.y -= 600
+		$JumpSound.play()
 	elif AUTO_JUMP and is_on_floor():
 		print("AutoJumped")
 		velocity.y -= 600
+		$JumpSound.play()
 	move_and_slide(velocity, Vector2(0, -1)) # Move down 1 pixel per physics frame
 	# if get_slide_count() == 0:
 	# 	onPlatform = false
