@@ -15,6 +15,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var potential_limit_bottom = get_viewport().get_visible_rect().size[1]
-	limit_bottom = potential_limit_bottom
+	var potential_limit_bottom = get_global_position()[1] + (get_viewport().get_visible_rect().size[1] / 2)
+	if potential_limit_bottom < limit_bottom:
+		limit_bottom = potential_limit_bottom
 
