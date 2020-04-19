@@ -1,5 +1,6 @@
 extends Node2D
 
+signal spawnPlatforms
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -16,12 +17,21 @@ func _ready():
 #	pass
 
 
-# platform is exciting free it up
+
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
-	# need to let 
-	queue_free()
+	var value = get_bottom_left()
+	if (position.y > value):
+		emit_signal("spawnPlatforms")
+		queue_free()
+	
 
 
 # platform is entering the scene
 func _on_VisibilityNotifier2D_viewport_entered(viewport):
-	pass # Replace with function body.
+	print("entered the viewport")
+	
+func get_bottom_left():
+	var vtrans = get_canvas_transform()
+	var top_left = -vtrans.get_origin() / vtrans.get_scale()
+	var vsize = get_viewport_rect().size
+	return Vector2(top_left + 0.5 * vsize / vtrans.get_scale()).y
