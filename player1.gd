@@ -105,6 +105,11 @@ func change_animation():
 		$AnimatedSprite.animation = "small"
 	pass
 
+func _on_player_water_death(body):
+	health = 0
+	print(health)
+	change_animation()
+
 func _on_player_coal(body):
 	if health >= 70:
 		health = 100

@@ -19,3 +19,7 @@ func _process(delta):
 func _on_player1_riseWater(y):
 	position.y = min(position.y, y + 700)
 	pass # Replace with function body.
+
+func _on_Area2D_body_entered(body):
+	if body.is_in_group("Player"):
+		Global.Player._on_player_water_death("")
