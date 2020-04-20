@@ -11,13 +11,14 @@ const AUTO_JUMP = true
 var loop_on_x = true setget set_loop_on_x, get_loop_on_x
 var velocity = Vector2()
 var onPlatform = false
-export var health = 50
+export var health = 100
 signal game_over
 var timer
 
 var can_jump = false
 
 func enable_jumping():
+	$Timer.start()
 	can_jump = true
 
 func get_loop_on_x():
@@ -78,8 +79,6 @@ func apply_gravity(delta):
 func _ready():
 	Global.Player = self
 	change_animation()
-	timer = get_node("Timer")
-	timer.start()
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

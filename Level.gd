@@ -19,6 +19,7 @@ func start():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	calc_score()
+	$"CanvasLayer/Score UI".set_health($player1.health)
 
 func calc_score():
 	score = max(score, -int($player1.position.y / 100))
