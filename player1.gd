@@ -13,6 +13,7 @@ var velocity = Vector2()
 var onPlatform = false
 export var health = 50
 signal game_over
+var timer
 
 func get_loop_on_x():
 	return loop_on_x
@@ -69,6 +70,8 @@ func apply_gravity(delta):
 func _ready():
 	Global.Player = self
 	change_animation()
+	timer = get_node("Timer")
+	timer.start()
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -111,3 +114,13 @@ func _on_player_water(body):
 		health -= 30
 	print(health)
 	change_animation()
+
+
+func _on_Timer_timeout():
+	if health <= 5:
+		health = 0
+	else:
+		health -= 5
+	print(health)
+	change_animation()
+	pass # Replace with function body.
