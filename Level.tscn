@@ -42,6 +42,6 @@ layer = -2
 position = Vector2( 1, 0 )
 z_index = 5
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 playing = true
 offset = Vector2( 300, 400 )

@@ -1,5 +1,7 @@
 extends Control
 
+signal start_game
+
 var score = 0
 
 func set_health(val):
@@ -7,6 +9,9 @@ func set_health(val):
 
 func _process(delta):
 	$score.text = str(score)
+	if Input.is_action_pressed("start"):
+		$start.visible = false
+		emit_signal("start_game")
 
 func _ready():
 	pass # Replace with function body.
