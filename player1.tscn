@@ -10,13 +10,14 @@
 [ext_resource path="res://assets/player/large_frame_1.png" type="Texture" id=8]
 [ext_resource path="res://player1.gd" type="Script" id=9]
 [ext_resource path="res://assets/player/large_frame_3.png" type="Texture" id=10]
-[ext_resource path="res://assets/player/jump.wav" type="AudioStream" id=11]
+[ext_resource path="res://Camera2D.gd" type="Script" id=11]
+[ext_resource path="res://assets/player/jump.wav" type="AudioStream" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 6 ), ExtResource( 5 ) ],
 "loop": true,
-"name": "large",
+"name": "medium",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ) ],
@@ -24,9 +25,9 @@ animations = [ {
 "name": "small",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 1 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 10 ) ],
 "loop": true,
-"name": "medium",
+"name": "large",
 "speed": 10.0
 } ]
 
@@ -51,6 +52,11 @@ shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-
+limit_left = 0
+limit_right = 1000
+limit_smoothed = true
+drag_margin_v_enabled = true
+drag_margin_bottom = 0.9
+script = ExtResource( 11 )
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
+stream = ExtResource( 12 )
