@@ -17,5 +17,5 @@ func _process(delta):
 
 
 func _on_player1_riseWater(y):
-	position.y = y + 700
+	position.y = min(position.y, y + 700)
 	pass # Replace with function body.
