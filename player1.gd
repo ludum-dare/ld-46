@@ -11,6 +11,7 @@ const AUTO_JUMP = true
 var loop_on_x = true setget set_loop_on_x, get_loop_on_x
 var velocity = Vector2()
 var onPlatform = false
+signal game_over
 
 func get_loop_on_x():
 	return loop_on_x
@@ -65,8 +66,15 @@ func apply_gravity(delta):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
 	pass
-	
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_player_body_entered(body):
+	print("Hello!")
+	pass # Replace with function body.
