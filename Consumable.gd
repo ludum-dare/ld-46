@@ -35,3 +35,8 @@ func get_bottom_left():
 	var top_left = -vtrans.get_origin() / vtrans.get_scale()
 	var vsize = get_viewport_rect().size
 	return Vector2(top_left + 0.5 * vsize / vtrans.get_scale()).y
+
+
+func _on_Area2D_body_entered(body):
+	print("Entered a powerup!")
+	pass # Replace with function body.
