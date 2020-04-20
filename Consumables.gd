@@ -4,7 +4,7 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var SPAWN_DISTANCE = 1500
+var SPAWN_DISTANCE = 200
 var coal = load("res://Consumables/Coal.tscn")
 var logitem = load("res://Consumables/Log.tscn")
 var water = load("res://Consumables/Water.tscn")
@@ -25,14 +25,24 @@ func _ready():
 
 
 func _on_OnScreenConsumable_spawnConsumables():
-	var consumableInstance = coal.instance()
+	var consumableNum = rng.randi_range(0,2)
+	var consumableInstance
+	match consumableNum:
+		0:
+			consumableInstance = coal.instance()
+		1:
+			consumableInstance = water.instance()
+		2:
+			consumableInstance = logitem.instance()
+	
+	
 	var child = add_child(consumableInstance)
 
 	var spawnlocation = get_top_left_y()
 	
 	consumableInstance.position.x = rng.randi_range(0, 600)
 	consumableInstance.position.y = spawnlocation + SPAWN_DISTANCE
-	consumableInstance.connect("spawnConsumable", self, "_on_OnScreenConsumable_spawnConsumables")
+	consumableInstance.connect("spawnConsumables", self, "_on_OnScreenConsumable_spawnConsumables")
 	
 
 func get_top_left_y():

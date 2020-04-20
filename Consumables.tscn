@@ -9,10 +9,10 @@
 script = ExtResource( 2 )
 
 [node name="Water" parent="." instance=ExtResource( 3 )]
-position = Vector2( 403.266, -144.648 )
+position = Vector2( 462.616, -780.253 )
 
 [node name="Coal" parent="." instance=ExtResource( 1 )]
-position = Vector2( 166.798, 124.743 )
+position = Vector2( 169.905, -305.042 )
 
 [node name="Log" parent="." instance=ExtResource( 4 )]
 position = Vector2( 364.956, 308.118 )
