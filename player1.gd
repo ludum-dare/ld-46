@@ -68,6 +68,7 @@ func apply_gravity(delta):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.Player = self
+	change_animation()
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -78,12 +79,22 @@ func _ready():
 func _on_player_body_entered(body):
 	pass # Replace with function body.
 
+func change_animation():
+	if health >= 70:
+		$AnimatedSprite.animation = "large"
+	elif health >= 30:
+		$AnimatedSprite.animation = "medium"
+	else: 
+		$AnimatedSprite.animation = "small"
+	pass
+
 func _on_player_coal(body):
 	if health >= 70:
 		health = 100
 	else:
 		health += 30
 	print(health)
+	change_animation()
 	
 func _on_player_log(body):
 	if health >= 90:
@@ -91,6 +102,7 @@ func _on_player_log(body):
 	else:
 		health += 10
 	print(health)
+	change_animation()
 	
 func _on_player_water(body):
 	if health <= 30:
@@ -98,3 +110,4 @@ func _on_player_water(body):
 	else:
 		health -= 30
 	print(health)
+	change_animation()
