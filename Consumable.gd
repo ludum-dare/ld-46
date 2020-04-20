@@ -58,5 +58,6 @@ func _on_Area2D_body_entered(body):
 		elif (consumable_type == "Water"):
 			hide()
 			Global.Player._on_player_water("")
+		queue_free()
 			
 	pass # Replace with function body.
