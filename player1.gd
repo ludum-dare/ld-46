@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+signal riseWater(yposition)
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -20,6 +21,7 @@ func set_loop_on_x(new_val):
 
 func _physics_process(delta):
 	apply_gravity(delta)
+	rise_water(delta)
 	if Input.is_action_pressed("ui_left") and not is_on_floor():
 		velocity.x = -SPEED
 	elif Input.is_action_pressed("ui_right") and not is_on_floor():
@@ -66,6 +68,10 @@ func apply_gravity(delta):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
+
+func rise_water(delta):
+	if velocity.y <= 0:
+		emit_signal("riseWater", position.y)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
