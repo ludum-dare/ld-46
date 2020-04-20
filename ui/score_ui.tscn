@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/fonts/Stardate81316-aolE.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ui/score_ui.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-size = 72
+size = 64
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.243137, 0.509804, 0.890196, 1 )
+corner_detail = 10
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -27,12 +31,24 @@ __meta__ = {
 }
 
 [node name="score" type="Label" parent="."]
-margin_left = 153.843
-margin_top = 6.84412
-margin_right = 289.843
-margin_bottom = 78.8441
+margin_left = 139.0
+margin_top = 9.0
+margin_right = 380.0
+margin_bottom = 81.0
 custom_fonts/font = SubResource( 1 )
 text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="healthbar" type="ProgressBar" parent="."]
+margin_left = 11.697
+margin_top = 76.0
+margin_right = 214.697
+margin_bottom = 100.0
+custom_styles/fg = SubResource( 2 )
+value = 100.0
+percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }

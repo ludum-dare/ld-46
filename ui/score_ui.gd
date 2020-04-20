@@ -2,6 +2,9 @@ extends Control
 
 var score = 0
 
+func set_health(val):
+	$healthbar.value = min(max(val, 0), 100)
+
 func _process(delta):
 	$score.text = str(score)
 
