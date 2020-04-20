@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/good_pickup.wav-e63ebc83a635dcd50b54f3360382af75.sample"
+
+[deps]
+
+source_file="res://assets/items/good_pickup.wav"
+dest_files=[ "res://.import/good_pickup.wav-e63ebc83a635dcd50b54f3360382af75.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
