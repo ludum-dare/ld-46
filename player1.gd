@@ -11,6 +11,7 @@ const AUTO_JUMP = true
 var loop_on_x = true setget set_loop_on_x, get_loop_on_x
 var velocity = Vector2()
 var onPlatform = false
+export var health = 50
 signal game_over
 
 func get_loop_on_x():
@@ -66,9 +67,8 @@ func apply_gravity(delta):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
+	Global.Player = self
 	pass
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -76,5 +76,25 @@ func _ready():
 
 
 func _on_player_body_entered(body):
-	print("Hello!")
 	pass # Replace with function body.
+
+func _on_player_coal(body):
+	if health >= 70:
+		health = 100
+	else:
+		health += 30
+	print(health)
+	
+func _on_player_log(body):
+	if health >= 90:
+		health = 100
+	else:
+		health += 10
+	print(health)
+	
+func _on_player_water(body):
+	if health <= 30:
+		health = 0
+	else:
+		health -= 30
+	print(health)

@@ -41,7 +41,9 @@ height = 149.904
 radius = 107.445
 height = 180.99
 
-[node name="player1" type="KinematicBody2D"]
+[node name="player1" type="KinematicBody2D" groups=[
+"Player",
+]]
 scale = Vector2( 0.3, 0.3 )
 z_index = 1
 script = ExtResource( 9 )
@@ -49,6 +51,7 @@ script = ExtResource( 9 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "small"
+frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

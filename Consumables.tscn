@@ -16,3 +16,4 @@ position = Vector2( 169.905, -305.042 )
 
 [node name="Log" parent="." instance=ExtResource( 4 )]
 position = Vector2( 364.956, 308.118 )
+[connection signal="player_coal" from="Coal" to="." method="_on_Coal_player_coal"]
