@@ -12,6 +12,14 @@ const AUTO_JUMP = true
 var loop_on_x = true setget set_loop_on_x, get_loop_on_x
 var velocity = Vector2()
 var onPlatform = false
+export var health = 50
+signal game_over
+var timer
+
+var can_jump = false
+
+func enable_jumping():
+	can_jump = true
 
 func get_loop_on_x():
 	return loop_on_x
@@ -30,14 +38,17 @@ func _physics_process(delta):
 		velocity.x = velocity.x / 1.2
 		
 	var motion = velocity * delta
-	if Input.is_action_pressed("ui_up") and is_on_floor():
-		print("Jumped")
-		velocity.y -= 600
-		$JumpSound.play()
-	elif AUTO_JUMP and is_on_floor():
-		print("AutoJumped")
-		velocity.y -= 600
-		$JumpSound.play()
+	
+	if can_jump:
+		if Input.is_action_pressed("ui_up") and is_on_floor():
+			print("Jumped")
+			velocity.y -= 600
+			$JumpSound.play()
+		elif AUTO_JUMP and is_on_floor():
+			print("AutoJumped")
+			velocity.y -= 600
+			$JumpSound.play()
+		
 	if loop_on_x:
 		if position.x <= 0 and velocity.x < 0:
 			position.x = get_viewport().get_visible_rect().size[0]
@@ -67,6 +78,10 @@ func apply_gravity(delta):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.Player = self
+	change_animation()
+	timer = get_node("Timer")
+	timer.start()
 	pass
 
 func rise_water(delta):
@@ -76,3 +91,50 @@ func rise_water(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_player_body_entered(body):
+	pass # Replace with function body.
+
+func change_animation():
+	if health >= 70:
+		$AnimatedSprite.animation = "large"
+	elif health >= 30:
+		$AnimatedSprite.animation = "medium"
+	else: 
+		$AnimatedSprite.animation = "small"
+	pass
+
+func _on_player_coal(body):
+	if health >= 70:
+		health = 100
+	else:
+		health += 30
+	print(health)
+	change_animation()
+	
+func _on_player_log(body):
+	if health >= 90:
+		health = 100
+	else:
+		health += 10
+	print(health)
+	change_animation()
+	
+func _on_player_water(body):
+	if health <= 30:
+		health = 0
+	else:
+		health -= 30
+	print(health)
+	change_animation()
+
+
+func _on_Timer_timeout():
+	if health <= 5:
+		health = 0
+	else:
+		health -= 5
+	print(health)
+	change_animation()
+	pass # Replace with function body.

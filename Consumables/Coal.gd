@@ -3,9 +3,9 @@ extends "res://Consumable.gd"
 # var a = 2
 # var b = "text"
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_consumable_type("Coal")
 	pass # Replace with function body.
 
 
