@@ -12,13 +12,14 @@ const AUTO_JUMP = true
 var loop_on_x = true setget set_loop_on_x, get_loop_on_x
 var velocity = Vector2()
 var onPlatform = false
-export var health = 50
+export var health = 100
 signal game_over
 var timer
 
 var can_jump = false
 
 func enable_jumping():
+	$Timer.start()
 	can_jump = true
 
 func get_loop_on_x():
@@ -48,6 +49,12 @@ func _physics_process(delta):
 			print("AutoJumped")
 			velocity.y -= 600
 			$JumpSound.play()
+		if Input.is_action_pressed("ui_left") and not is_on_floor():
+			velocity.x = -SPEED
+		elif Input.is_action_pressed("ui_right") and not is_on_floor():
+			velocity.x = SPEED
+		else: 
+			velocity.x = velocity.x / 1.2
 		
 	if loop_on_x:
 		if position.x <= 0 and velocity.x < 0:
@@ -80,8 +87,6 @@ func apply_gravity(delta):
 func _ready():
 	Global.Player = self
 	change_animation()
-	timer = get_node("Timer")
-	timer.start()
 	pass
 
 func rise_water(delta):
@@ -129,6 +134,7 @@ func _on_player_log(body):
 func _on_player_water(body):
 	if health <= 30:
 		health = 0
+		emit_signal("game_over")
 	else:
 		health -= 30
 	print(health)
@@ -138,6 +144,7 @@ func _on_player_water(body):
 func _on_Timer_timeout():
 	if health <= 5:
 		health = 0
+		emit_signal("game_over")
 	else:
 		health -= 5
 	print(health)
