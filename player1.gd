@@ -35,7 +35,7 @@ func _physics_process(delta):
 	elif AUTO_JUMP and is_on_floor():
 		print("AutoJumped")
 		velocity.y -= 600
-    $JumpSound.play()
+		$JumpSound.play()
 	if position.x <= 0 and velocity.x < 0:
 		position.x = get_viewport().get_visible_rect().size[0]
 	if position.x >= get_viewport().get_visible_rect().size[0] and velocity.x > 0:
