@@ -15,6 +15,11 @@ export var health = 50
 signal game_over
 var timer
 
+var can_jump = false
+
+func enable_jumping():
+	can_jump = true
+
 func get_loop_on_x():
 	return loop_on_x
 
@@ -31,14 +36,17 @@ func _physics_process(delta):
 		velocity.x = velocity.x / 1.2
 		
 	var motion = velocity * delta
-	if Input.is_action_pressed("ui_up") and is_on_floor():
-		print("Jumped")
-		velocity.y -= 600
-		$JumpSound.play()
-	elif AUTO_JUMP and is_on_floor():
-		print("AutoJumped")
-		velocity.y -= 600
-		$JumpSound.play()
+	
+	if can_jump:
+		if Input.is_action_pressed("ui_up") and is_on_floor():
+			print("Jumped")
+			velocity.y -= 600
+			$JumpSound.play()
+		elif AUTO_JUMP and is_on_floor():
+			print("AutoJumped")
+			velocity.y -= 600
+			$JumpSound.play()
+		
 	if loop_on_x:
 		if position.x <= 0 and velocity.x < 0:
 			position.x = get_viewport().get_visible_rect().size[0]
