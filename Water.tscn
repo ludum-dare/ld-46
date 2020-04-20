@@ -14,7 +14,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 300.174, 333.438 )
+extents = Vector2( 300.174, 346.298 )
 
 [node name="Water" type="Node2D"]
 script = ExtResource( 4 )
@@ -24,8 +24,8 @@ frames = SubResource( 1 )
 frame = 1
 playing = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="AnimatedSprite"]
+[node name="Area2D" type="Area2D" parent="AnimatedSprite"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/StaticBody2D"]
-position = Vector2( 0.00012207, 86.8027 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/Area2D"]
+position = Vector2( 1.07178, 50.3669 )
 shape = SubResource( 2 )
