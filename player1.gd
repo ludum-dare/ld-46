@@ -36,10 +36,18 @@ func _physics_process(delta):
 		print("AutoJumped")
 		velocity.y -= 600
 		$JumpSound.play()
-	if position.x <= 0 and velocity.x < 0:
-		position.x = get_viewport().get_visible_rect().size[0]
-	if position.x >= get_viewport().get_visible_rect().size[0] and velocity.x > 0:
-		position.x = 0
+	if loop_on_x:
+		if position.x <= 0 and velocity.x < 0:
+			position.x = get_viewport().get_visible_rect().size[0]
+		if position.x >= get_viewport().get_visible_rect().size[0] and velocity.x > 0:
+			position.x = 0
+	else:
+		if position.x <= 0 and velocity.x < 0:
+			position.x = 0
+			velocity.x = 0
+		if position.x  >= get_viewport().get_visible_rect().size[0] and velocity.x > 0:
+			position.x = get_viewport().get_visible_rect().size[0]
+			velocity.x = 0
 	move_and_slide(velocity, Vector2(0, -1)) # Move down 1 pixel per physics frame
 	# if get_slide_count() == 0:
 	# 	onPlatform = false
