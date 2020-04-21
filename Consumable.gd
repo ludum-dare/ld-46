@@ -50,13 +50,10 @@ func _on_Area2D_body_entered(body):
 		print("Entered a powerup!")
 		print(consumable_type)
 		if (consumable_type == "Coal"):
-			hide()
 			Global.Player._on_player_coal("")
 		elif (consumable_type == "Log"):
-			hide()
 			Global.Player._on_player_log("")
 		elif (consumable_type == "Water"):
-			hide()
 			Global.Player._on_player_water("")
 		queue_free()
 			
