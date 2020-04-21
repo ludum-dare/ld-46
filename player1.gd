@@ -31,14 +31,6 @@ func set_loop_on_x(new_val):
 func _physics_process(delta):
 	apply_gravity(delta)
 	rise_water(delta)
-	if Input.is_action_pressed("ui_left") and not is_on_floor():
-		velocity.x = -SPEED
-	elif Input.is_action_pressed("ui_right") and not is_on_floor():
-		velocity.x = SPEED
-	else: 
-		velocity.x = velocity.x / 1.2
-		
-	var motion = velocity * delta
 	
 	if can_jump:
 		if Input.is_action_pressed("ui_up") and is_on_floor():
