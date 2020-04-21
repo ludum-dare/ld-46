@@ -104,6 +104,7 @@ func change_animation():
 
 func _on_player_water_death(body):
 	health = 0
+	emit_signal("game_over")
 	print(health)
 	change_animation()
 
