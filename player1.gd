@@ -78,7 +78,7 @@ func apply_gravity(delta):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.Player = self
-	change_animation()
+	update_player_state()
 	pass
 
 func rise_water(delta):
@@ -93,53 +93,48 @@ func rise_water(delta):
 func _on_player_body_entered(body):
 	pass # Replace with function body.
 
-func change_animation():
+func update_player_state():
 	if health >= 70:
 		$AnimatedSprite.animation = "large"
 	elif health >= 30:
 		$AnimatedSprite.animation = "medium"
-	else: 
+	elif health > 0: 
 		$AnimatedSprite.animation = "small"
+	else:
+		emit_signal("game_over")
+		hide()
+		can_jump = false
 	pass
 
 func _on_player_water_death(body):
 	health = 0
-	emit_signal("game_over")
-	print(health)
-	change_animation()
+	update_player_state()
 
 func _on_player_coal(body):
 	if health >= 70:
 		health = 100
 	else:
 		health += 30
-	print(health)
-	change_animation()
+	update_player_state()
 	
 func _on_player_log(body):
 	if health >= 90:
 		health = 100
 	else:
 		health += 10
-	print(health)
-	change_animation()
+	update_player_state()
 	
 func _on_player_water(body):
 	if health <= 30:
 		health = 0
-		emit_signal("game_over")
 	else:
 		health -= 30
-	print(health)
-	change_animation()
+	update_player_state()
 
 
 func _on_Timer_timeout():
 	if health <= 5:
 		health = 0
-		emit_signal("game_over")
 	else:
 		health -= 5
-	print(health)
-	change_animation()
-	pass # Replace with function body.
+	update_player_state()

@@ -65,3 +65,17 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="replay" type="Label" parent="."]
+visible = false
+margin_left = 191.885
+margin_top = 321.977
+margin_right = 428.885
+margin_bottom = 452.977
+custom_fonts/font = SubResource( 1 )
+text = "Press Space
+To Play Again"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -39,7 +39,7 @@ func _on_OnScreenConsumable_spawnConsumables():
 	var child = add_child(consumableInstance)
 
 	var spawnlocation = get_top_left_y()
-	
+	print(spawnlocation)
 	consumableInstance.position.x = rng.randi_range(0, 600)
 	consumableInstance.position.y = spawnlocation + SPAWN_DISTANCE
 	consumableInstance.connect("spawnConsumables", self, "_on_OnScreenConsumable_spawnConsumables")
