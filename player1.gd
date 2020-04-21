@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+signal riseWater(yposition)
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -29,6 +30,7 @@ func set_loop_on_x(new_val):
 
 func _physics_process(delta):
 	apply_gravity(delta)
+	rise_water(delta)
 	
 	if can_jump:
 		if Input.is_action_pressed("ui_up") and is_on_floor():
@@ -79,6 +81,10 @@ func _ready():
 	change_animation()
 	pass
 
+func rise_water(delta):
+	if velocity.y <= 0:
+		emit_signal("riseWater", position.y)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -95,6 +101,12 @@ func change_animation():
 	else: 
 		$AnimatedSprite.animation = "small"
 	pass
+
+func _on_player_water_death(body):
+	health = 0
+	emit_signal("game_over")
+	print(health)
+	change_animation()
 
 func _on_player_coal(body):
 	if health >= 70:
