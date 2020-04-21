@@ -19,9 +19,12 @@
         background-color: #222226;
         font-family: 'Noto Sans', Arial, sans-serif;
       }
+      .card-columns {
+        column-count: 2;
+      }
 
       /* Godot Engine default theme style
-		 * ================================ */
+      * ================================ */
 
       .godot {
         color: #e0e0e0;
@@ -66,7 +69,7 @@
       }
 
       /* Canvas / wrapper
-		 * ================ */
+      * ================ */
 
       #container {
         display: inline-block; /* scale with canvas */
@@ -89,7 +92,7 @@
       }
 
       /* Status display
-		 * ============== */
+      * ============== */
 
       #status {
         position: absolute;
@@ -175,7 +178,7 @@
       }
 
       /* Debug output
-		 * ============ */
+      * ============ */
 
       #output-panel {
         display: none;
@@ -245,7 +248,7 @@
     <hr />
     <div class="container">
       <div class="row justify-content-center">
-        <div class="card-columns">
+        <div class="col-7 card-columns">
           <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
             <div class="card-header">Keep it Alight</div>
             <div class="card-body">
