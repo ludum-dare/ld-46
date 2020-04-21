@@ -11,10 +11,18 @@ var score = 0
 func _ready():
 	(get_node("Consumables").get_node("Coal")).connect("player_coal", get_node("player1"), "_on_player_coal")
 	$"CanvasLayer/Score UI".connect("start_game", self, "start")
+	$"CanvasLayer/Score UI".connect("restart_game", self, "reload")
+	$player1.connect("game_over", self, "restart")
 	$music.play()
 
 func start():
 	$player1.enable_jumping()
+	
+func restart():
+	$"CanvasLayer/Score UI".present_restart()
+	
+func reload():
+	get_tree().reload_current_scene()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
